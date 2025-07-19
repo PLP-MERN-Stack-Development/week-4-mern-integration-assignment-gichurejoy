@@ -1,79 +1,180 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19955873&assignment_repo_type=AssignmentRepo)
-# MERN Stack Integration Assignment
+# MERN Stack Blog Application
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+A full-stack blog application built with the MERN stack (MongoDB, Express.js, React.js, Node.js) featuring user authentication, blog post management, and advanced features.
 
-## Assignment Overview
+## Features
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+- 🔐 **User Authentication**
+  - JWT-based authentication
+  - User registration and login
+  - Protected routes
+  - Role-based authorization (Admin/User)
+
+
+
+- 📝 **Blog Post Management**
+  - Create, read, update, and delete posts
+  - Rich text editing
+  - Featured image uploads
+  - Category management
+  - Comments system
+
+ 
+
+- 🎨 **Modern UI/UX**
+  - Responsive Material-UI design
+  - Clean and intuitive interface
+  - Optimistic updates
+  - Loading states and error handling
+
+- 🔍 **Advanced Features**
+  - Post search functionality
+  - Category filtering
+  - Pagination
+  - Image upload support
+  - Comment system
+
+## Technology Stack
+
+- **Frontend:**
+  - React.js with Vite
+  - Material-UI for styling
+  - React Router for navigation
+  - React Context for state management
+  - Axios for API calls
+
+- **Backend:**
+  - Node.js & Express.js
+  - MongoDB Atlas for database
+  - JWT for authentication
+  - Multer for file uploads
+  - Express Validator for input validation
 
 ## Project Structure
 
 ```
 mern-blog/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── context/        # React context providers
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Express.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Mongoose models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/    # Reusable components
+│   │   ├── pages/        # Page components
+│   │   ├── context/      # Context providers
+│   │   ├── services/     # API services
+│   │   └── hooks/        # Custom hooks
+│   └── package.json
+├── server/                # Express backend
+│   ├── config/           # Configuration files
+│   ├── controllers/      # Route controllers
+│   ├── models/          # Mongoose models
+│   ├── routes/          # API routes
+│   ├── middleware/      # Custom middleware
+│   └── utils/           # Utility functions
+└── README.md
 ```
 
-## Getting Started
+## API Endpoints
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+### Authentication
+- POST `/api/auth/register` - Register new user
+- POST `/api/auth/login` - Login user
+- GET `/api/auth/me` - Get current user
 
-## Files Included
+### Posts
+- GET `/api/posts` - Get all posts (with pagination)
+- GET `/api/posts/:id` - Get single post
+- POST `/api/posts` - Create new post
+- PUT `/api/posts/:id` - Update post
+- DELETE `/api/posts/:id` - Delete post
+- POST `/api/posts/:id/comments` - Add comment to post
 
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
+### Categories
+- GET `/api/categories` - Get all categories
+- POST `/api/categories` - Create new category
+- PUT `/api/categories/:id` - Update category
+- DELETE `/api/categories/:id` - Delete category
 
-## Requirements
+## Setup Instructions
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
+1. Clone the repository
+```bash
+git clone <repository-url>
+```
 
-## Submission
+2. Install dependencies
+```bash
+# Install server dependencies
+cd server
+npm install
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+# Install client dependencies
+cd ../client
+npm install
+```
 
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
+3. Environment Setup
+   - Create `.env` file in server directory with:
+```
+PORT=5000
+MONGODB_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret
+NODE_ENV=development
+```
 
-## Resources
+4. Start the application
+```bash
+# Start server (from server directory)
+npm run dev
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
+# Start client (from client directory)
+npm run dev
+```
+
+5. Access the application
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5000
+
+## Screenshots
+
+### Home Page
+![Home Page](./screenshots/home.png)
+*Modern landing page with a welcoming message and clear call-to-action buttons for creating posts or viewing the blog*
+
+### Create New Post
+![Create Post](./screenshots/create-post.png)
+*User-friendly post creation interface with fields for title, content, categories, and featured image URL*
+
+### My Posts Dashboard
+![My Posts](./screenshots/my-posts.png)
+*Personal dashboard displaying user's posts with options to edit, delete, and view posts, including category tags*
+
+### Authentication
+![Login Page](./screenshots/login.png)
+*Clean and minimalist login interface with email/password authentication and signup option*
+
+### Features Showcased in Screenshots:
+- 🎨 Modern and clean UI design with pink accent colors
+- 📱 Fully responsive layout
+- 🔐 User authentication system
+- ✍️ Intuitive post creation and management
+- 🏷️ Category system for organizing posts
+- 💅 Consistent styling and branding throughout
+
+## Future Improvements
+
+- [ ] Add social authentication
+- [ ] Implement rich text editor
+- [ ] Add post analytics
+- [ ] Add user profiles
+- [ ] Implement real-time notifications
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License. 
